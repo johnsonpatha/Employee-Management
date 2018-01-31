@@ -1,0 +1,58 @@
+<html>
+<head>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script src="library//crud.js"></script>
+</head>
+<body>
+<div ng-app="Employee Managemet" class="container" ng-controller="EMP">
+<table class="table table-striped table-bordered">
+<tr>
+<td>ID</td>
+<td>
+<input type="text" class="form-control" ng-model="employee.id" /></td>
+</tr>
+<tr>
+<td>Name</td>
+<td>
+<input type="text" class="form-control" ng-model="employee.empName" /></td>
+</tr>
+<tr>
+<td class="text-right" colspan="2">
+<button ng-click="addItem(item)" class="btn btn-primary">
+Add
+</button>
+</td>
+</tr>
+</table>
+<table class="table table-striped table-bordered">
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Edit</th>
+<th>Remove</th>
+</tr>
+</thead>
+<tbody>
+<tr ng-repeat="item in items">
+<td><span ng-hide="editMode">{{employee.id}}</span>
+<input type="text" ng-show="editMode" ng-model="item.id" />
+</td>
+<td>
+<span ng-hide="editMode">{{employee.empName}}</span>
+<input type="text" ng-show="editMode" ng-model="item.name" />
+</td>
+<td>
+<i ng-hide="editMode" ng-click="editMode = true; editItem(item)" class="glyphicon glyphicon-edit"></i>
+<i class="glyphicon glyphicon-saved" ng-show="editMode" ng-click="editMode = false"></i>
+</td>
+<td>
+<i ng-click="removeItem($index)" class="glyphicon glyphicon-trash"></i>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>
